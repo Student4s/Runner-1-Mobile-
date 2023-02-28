@@ -12,7 +12,7 @@ public class SpawnTriggerZone : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("spawn new section");
-            Vector3 pointToSpawn = spawnPoint.transform.position + new Vector3(0, 0, 90);
+            Vector3 pointToSpawn = spawnPoint.transform.position;
             GameObject newRoad = roads[Random.Range(0,roads.Length-1)];
             Instantiate(newRoad, pointToSpawn, Quaternion.identity);
         }

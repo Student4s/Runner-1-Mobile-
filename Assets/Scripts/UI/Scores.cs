@@ -23,7 +23,7 @@ public class Scores : MonoBehaviour
             scores += 1;
         }
 
-        txt.text = "" + scores;
+        txt.text =  scores.ToString();
     }
 
     void PlayerDeath()

@@ -10,7 +10,7 @@ public class AnimatorController : MonoBehaviour
 
     private void Start()
     {
-        Velcro.ChangeStack += Shake;
+        Wall.ChangeStack += Shake;
     }
 
     public void Shake()
@@ -21,6 +21,6 @@ public class AnimatorController : MonoBehaviour
     
     private void OnDestroy()
     {
-        Velcro.ChangeStack -= Shake;
+        Wall.ChangeStack -= Shake;
     }
 }

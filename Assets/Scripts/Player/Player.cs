@@ -25,22 +25,18 @@ public class Player : MonoBehaviour
     public static event PlayerDeath Dead;
     void Start()
     {
-        Velcro.ChangeStack += Change;
+        Wall.ChangeStack += Change;
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    void FixedUpdate()
     {
         if (canMove)
         {
-            
             transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z +speed * Time.deltaTime);
             speed += Time.deltaTime * 0.1f;
-
             if (Input.touchCount > 0)
             {
                 touch = Input.GetTouch(0);
-
                 if (touch.phase == TouchPhase.Moved)
                 {
                     transform.position = new Vector3(
@@ -49,7 +45,6 @@ public class Player : MonoBehaviour
                 }
             }
         }
-        
     }
 
     private void Change()
@@ -63,9 +58,10 @@ public class Player : MonoBehaviour
         {
             countOfStacks += 1;
             ActivateStackEffect();
-            playerCube.transform.localPosition += new Vector3(0, 1.01f, 0);
+            playerCube.transform.localPosition += new Vector3(0, 1f, 0);
             other.transform.parent = playerCube.transform;
-            other.transform.localPosition = new Vector3(0, -countOfStacks, 0);
+            other.transform.localPosition = new Vector3(0, -1f, 0);
+            other.transform.parent = transform;
             PlayJumpAnimation();
         }
     }
@@ -83,12 +79,12 @@ public class Player : MonoBehaviour
     
     public void PlayJumpAnimation()
     {
-        playerAnim.SetTrigger("Jump");
+       playerAnim.SetTrigger("Jump");
     }
 
 
     private void OnDestroy()
     {
-        Velcro.ChangeStack -= Change;
+        Wall.ChangeStack -= Change;
     }
 }
