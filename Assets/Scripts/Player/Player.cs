@@ -6,13 +6,14 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private float speed;
+    [SerializeField] private float sideSpeed;
     [SerializeField] private bool canMove=false;
     [SerializeField] private int countOfStacks = 0;
     [SerializeField] private GameObject playerCube;
     [SerializeField] private Animator playerAnim;
     
     private Touch touch;
-    [SerializeField] private float sideSpeed;
+    
     [SerializeField] private float roadWidth;
     
     public delegate void CubeStacks();
